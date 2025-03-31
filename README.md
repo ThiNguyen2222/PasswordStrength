@@ -3,6 +3,6 @@ This basically processes the data into different features used to help with accu
 
 We will just be using [processed_data.csv] for the model training so just download that.
 
-## Install pandas, wordninja, numpy, and nltk if you haven't
+## Install pandas, wordninja, numpy, and nltk
 pip install ____
 
