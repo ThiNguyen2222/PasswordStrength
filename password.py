@@ -8,7 +8,7 @@ from collections import Counter
 import nltk
 from nltk.corpus import words
 
-#nltk.download('words')
+nltk.download('words')
 
 word_list = set(words.words())
 
