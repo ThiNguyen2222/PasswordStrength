@@ -5,12 +5,9 @@ import string
 import wordninja
 import numpy as np
 from collections import Counter
-import nltk
-from nltk.corpus import words
 
-nltk.download('words')
-
-word_list = set(words.words())
+with open("word_list.txt") as f:
+    word_list = set(word.strip().lower() for word in f.readlines())
 
 df = pd.read_csv("data.csv", on_bad_lines='skip')
 
@@ -24,8 +21,20 @@ def count_chars(password):
 
 def contains_dict_word(password):
     password = str(password).lower()
-    segment = wordninja.split(password)
-    return int(any(len(word) > 3 and word in word_list for word in segment))
+
+    reg_words = re.findall(r'[a-zA-Z]+', password)
+
+    ninja_words = []
+    for word in reg_words:
+        if len(word) > 3:
+            ninja_words.extend(wordninja.split(word))  
+
+    all_words = set(reg_words + ninja_words)
+    
+    valid_words = [word for word in all_words if word in word_list and len(word) >= 3]
+
+    return len(valid_words)
+
 
 def entropy(password):
     password = str(password)
@@ -36,7 +45,7 @@ def entropy(password):
 df['uppercase'], df['lowercase'], df['digits'], df['symbols'] = zip(*df['password'].map(count_chars))
 df['has_dict_word'] = df['password'].map(contains_dict_word)
 df['entropy'] = df['password'].map(entropy)
-df['entropy'] = df['entropy'].apply(lambda x: round(x, 2))
+df['entropy'] = df['entropy'].apply(lambda x: round(x, 3))
 df['length'] = df['password'].apply(lambda x: len(str(x)) if pd.notna(x) else 0)
 
 df.to_csv("processed_data.csv", index=False)
