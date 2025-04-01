@@ -21,7 +21,6 @@ def count_chars(password):
 
 def contains_dict_word(password):
     password = str(password).lower()
-
     reg_words = re.findall(r'[a-zA-Z]+', password)
 
     ninja_words = []
@@ -30,9 +29,7 @@ def contains_dict_word(password):
             ninja_words.extend(wordninja.split(word))  
 
     all_words = set(reg_words + ninja_words)
-    
     valid_words = [word for word in all_words if word in word_list and len(word) >= 3]
-
     return len(valid_words)
 
 
