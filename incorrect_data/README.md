@@ -11,3 +11,6 @@ This one has regrex combined with wordninja, but because the nltk wordlist was s
 
 ## processed_data4.csv
 This one uses a new word bank called SCOWL, I think its still wrong because I didn't consider repeated words caused from using regex + wordninja at the same time. idk i dont rmbr anymore
+
+## Confusion Matrix
+If you want you can do a confusion matrix for all of them and see what each accuracy is like. Just remember to do a confusion matrix for the actual correct processed data. You can screenshot the results and put it on the report so we have something to write about
