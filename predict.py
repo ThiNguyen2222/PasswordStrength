@@ -5,6 +5,7 @@ import string
 import re
 import wordninja
 
+
 # Load trained model
 nb_model = joblib.load("nb_model.pkl")
 
@@ -53,6 +54,9 @@ def predict_strength(password):
     return strength_labels[prediction[0]]
 
 # Run a test prediction
+from suggestion import suggest_improvements # Imported from suggestion.py
+
 if __name__ == "__main__":
     password_input = input("Enter a password: ")
     print("Predicted Strength:", predict_strength(password_input))
+    print(suggest_improvements(password_input)) # Function from suggestion.py
