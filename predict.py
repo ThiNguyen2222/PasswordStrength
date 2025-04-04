@@ -1,6 +1,7 @@
 import joblib
 import pandas as pd
 import numpy as np
+import tkinter as tk
 import string
 import re
 import wordninja
@@ -69,26 +70,29 @@ def suggest_improvements(password):
 
     return "\n".join(suggestions)
 
-if __name__ == "__main__":
-    while True:
-        password_input = input("\nEnter a password (or type 'exit' to quit): ").strip()
-        
-        if password_input.lower() == "exit":
-            print("\nExiting program.")
-            break
+def check_password():
+    password_input = entry.get()
+    strength = predict_strength(password_input)
+    result_label.config(text=f"Predicted Strength: {strength}")
+    if strength != "Strong":
+        suggestions = suggest_improvements(password_input)
+        suggestion_label.config(text=f"Suggestions:\n{suggestions}")
+    else:
+        suggestion_label.config(text="✅ Your password is strong. No further changes needed.")
 
-        if not password_input:
-            print("\nError: You must enter a password.")
-            continue
+root = tk.Tk()
+root.title("Password Strength Checker")
+root.geometry("500x400")
 
-        strength = predict_strength(password_input)
-        print("\nPredicted Strength:", strength)
+entry = tk.Entry(root)
+entry.pack(pady=20)
 
-        # Only display suggestions if the password is not already strong
-        if strength != "Strong":
-            suggestions = suggest_improvements(password_input)
-            if suggestions:
-                print("\nSuggestions:\n" + suggestions)
-        else:
-            print("\n✅ Your password is strong. No further changes needed.")
-            break
+tk.Button(root, text="Check Strength", command=check_password).pack(pady=10)
+
+result_label = tk.Label(root, text="Predicted Strength:")
+result_label.pack(pady=10)
+
+suggestion_label = tk.Label(root, text="Suggestions:")
+suggestion_label.pack(pady=10)
+
+root.mainloop()
