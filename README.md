@@ -4,7 +4,7 @@ This project implements a password strength evaluator using a Gaussian Naive Bay
 ## Installation
 Python packages that are required
 
-`pip install pandas numpy wordninja nltk joblib scikit-learn`
+`pip install pandas numpy wordninja nltk joblib scikit-learn tkinter`
 
 `pip install matplotlib`
 
