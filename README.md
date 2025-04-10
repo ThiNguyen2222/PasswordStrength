@@ -54,6 +54,15 @@ The Naive Bayes model is trained using these features:
 * Entropy
 * Password length
 
+## Evaluation
+We evaluated the performance of our Naive Bayes classifier using accuracy and a confusion matrix, which measures how well the model classifies passwords into the correct strength category (Weak, Moderate, Strong).
+
+## Metrics Used
+
+## Results
+* Accuracy: 77% (varies depending on random training/test split)
+* The model performs best at identifying weak and strong passwords but had issues classifying weak passwords as moderate e.g. Summer2025 was classified as moderate although it is weak
+* The confusion matrix shows how many passwords were correctly or incorrectly classified using precision, recall, and F1-score per class
 
 ## Contributors
 * Lillian Thacker: Model Implementation & Training
@@ -63,3 +72,5 @@ The Naive Bayes model is trained using these features:
 * Ngoc Pham: UI Development
 
 * Caitlin San Pedro: Frontend Development & Visual Design
+
+## References
