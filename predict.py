@@ -6,7 +6,6 @@ import string
 import re
 import wordninja
 
-
 # Load trained model
 nb_model = joblib.load("nb_model.pkl")
 
@@ -80,19 +79,22 @@ def check_password():
     else:
         suggestion_label.config(text="✅ Your password is strong. No further changes needed.")
 
+# --- UI Setup ---
 root = tk.Tk()
 root.title("Password Strength Checker")
-root.geometry("500x400")
+root.geometry("600x600")
 
-entry = tk.Entry(root)
+font_style = ("Helvetica", 30)
+
+entry = tk.Entry(root, font=font_style, width=30)
 entry.pack(pady=20)
 
-tk.Button(root, text="Check Strength", command=check_password).pack(pady=10)
+tk.Button(root, text="Check Strength", command=check_password, font=font_style).pack(pady=10)
 
-result_label = tk.Label(root, text="Predicted Strength:")
+result_label = tk.Label(root, text="Predicted Strength:", font=font_style)
 result_label.pack(pady=10)
 
-suggestion_label = tk.Label(root, text="Suggestions:")
+suggestion_label = tk.Label(root, text="Suggestions:", font=font_style, justify="left", wraplength=460)
 suggestion_label.pack(pady=10)
 
 root.mainloop()
