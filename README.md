@@ -74,3 +74,6 @@ We evaluated the performance of our Naive Bayes classifier using accuracy and a 
 * Caitlin San Pedro: Frontend Development & Visual Design
 
 ## References
+* Password Dataset: https://www.kaggle.com/datasets/bhavikbb/password-strength-classifier-dataset
+* Code Reference: https://github.com/kishan0725/Checking-the-Password-Strength-using-ML
+* Word List Generator: http://app.aspell.net/create
